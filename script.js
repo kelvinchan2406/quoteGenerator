@@ -1,6 +1,6 @@
 const getQuoteId = document.getElementById("quote");
 const getAuthorId = document.getElementById("author");
-const getRefreshButton = document.getElementById("refresh");
+const getButton = document.getElementById("refresh");
 
 
 let data = [];
@@ -23,6 +23,7 @@ async function getQuote() {
     // const proxy = `https://cors-anywhere.herokuapp.com/`;
     const api = `https://type.fit/api/quotes`;
     try{
+        getQuoteId.textContent = `loading`;
         const response = await fetch(api);
         data = await response.json();
         getRndQuote();
@@ -32,6 +33,5 @@ async function getQuote() {
     }
 }
 
+getButton.addEventListener('click', getRndQuote);
 getQuote();
-
-getRefreshButton.addEventListener('onclick', getQuote);
