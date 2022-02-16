@@ -33,5 +33,5 @@ async function getQuote() {
     }
 }
 
-getButton.addEventListener('click', getRndQuote);
+getButton.addEventListener('click', getQuote);
 getQuote();
