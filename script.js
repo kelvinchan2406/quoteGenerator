@@ -16,14 +16,16 @@ const getRndQuote = () => {
     let randomNumber = Math.floor(Math.random()*data.length);
     quote = data[randomNumber].text;
     author = data[randomNumber].author;
-    assignQuote();
+    (!(typeof quote === `string`) || quote === ``) ? getQuote() : 
+        (!(typeof author === `string`) || author === ``) ? getQuote() : assignQuote();
+    
 }
 
 async function getQuote() {
     // const proxy = `https://cors-anywhere.herokuapp.com/`;
     const api = `https://type.fit/api/quotes`;
     try{
-        getQuoteId.textContent = `loading`;
+        getQuoteId.textContent = `Loading`;
         const response = await fetch(api);
         data = await response.json();
         getRndQuote();
@@ -35,5 +37,3 @@ async function getQuote() {
 
 getButton.addEventListener('click', getQuote);
 getQuote();
-// testsetsetsetsetets
-// why cant i push this
